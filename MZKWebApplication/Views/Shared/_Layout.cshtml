@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .arkaplan {
+            background-color: #ffffff;
+            background-image: url("https://www.transparenttextures.com/patterns/shattered.png");
+           
+        }
+
+        .navbaricin {
+            background-color: #00591c;
+            background-image: url("https://www.transparenttextures.com/patterns/solid.png");
+            font-family: 'Lobster', cursive;
+        }
+
+        .kutu {
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            font-size: 27px;
+        }
+
+        .kutuQ {
+            font-size: 52px;
+            padding-left: 100px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="arkaplan">
+    <div class="navbar navbar-inverse navbar-fixed-top navbaricin">
+        <div>
+            @Html.ActionLink("MAZAKA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand kutuQ" })
+        </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("ToDoList", "Index", "DutyModels", new { area = "" }, new { @class = "kutu " })</li>
+                        <li>@Html.ActionLink("Successful", "Successful", "DutyModels", new { area = "" }, new { @class = "kutu " })</li>
+                        <li>@Html.ActionLink("Unsuccessful", "Unsuccessful", "DutyModels", new { area = "" }, new { @class = "kutu " })</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            }
+            else
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            }
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Developed by Enes Bartu Ünal</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    
+</body>
+
+</html>

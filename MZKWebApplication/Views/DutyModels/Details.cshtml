@@ -1,0 +1,66 @@
+﻿@model WebApplicationMAZAKA.Models.DutyModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Title:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Başlık)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Comment:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acıklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Start Date:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Başlangıc)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("End Date:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bitis)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Is It Over?")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tamamlandı)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("User:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.applicationUser.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</button>  |
+    <button class="btn btn-default">@Html.ActionLink("Back to List", "Index")</button>
+</p>

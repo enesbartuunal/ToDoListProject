@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <br />
+    <br />
+    <br />
+    <hr />
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <p >
+            <center>
+                <h1>
+
+                    Welcome
+
+
+                </h1>
+
+                <h3>
+                    Register işlemi yapılırken Kulllanıcı Rolü User olarak atanıyor.<br />
+                    Startup' ta default admin hesabı,"Admin","User" rolleri  oluşturuluyor.<br />
+                    Web.config ayarları yapıldıktan sonra database üzerinden de bir kullanıcı rolü admin olarak değiştirilebilir.
+                </h3>
+            </center>
+        </p>
+
+    }
+    else
+    {
+        <p >
+            <center>
+                <h1>
+
+                    Use it for whatever action you want to do.
+                </h1>
+            </center>
+        </p>
+    }
+    <br />
+</div>
+

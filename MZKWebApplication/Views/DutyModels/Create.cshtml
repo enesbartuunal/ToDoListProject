@@ -1,0 +1,102 @@
+﻿@model WebApplicationMAZAKA.Models.DutyModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/ui-darkness/jquery-ui.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Başlık,"Title:",htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Başlık, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Başlık, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Acıklama, "Comment:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Acıklama, 5, 50, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Acıklama, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Başlangıc, "Start Date:", htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
+                <input name="Başlangıc" type="date"  class="form-control" />
+                @*@Html.EditorFor(model => model.Başlangıc, new { htmlAttributes = new {  @class = "DateTime" } })*@
+                @Html.ValidationMessageFor(model => model.Başlangıc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bitis, "End Date", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input name="Bitis" type="date"  class="form-control" />
+                @*@Html.EditorFor(model => model.Bitis, new { htmlAttributes = new { @class = "DateTime" } })*@
+                @Html.ValidationMessageFor(model => model.Bitis, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.applicationUserId,"User:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.applicationUserId,ViewBag.List as SelectList, "-Select-", new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.applicationUserId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*<div class="form-group">
+            @Html.HiddenFor(model => model.Tamamlandı, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.HiddenFor(model => model.Tamamlandı)
+                    @Html.ValidationMessageFor(model => model.Tamamlandı, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <button class="btn btn-default">@Html.ActionLink("Back to List", "Index")</button>  
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#DateTime").datepicker({
+                dateFormat: "dd.mm.yy",
+                monthNames: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+                dayNamesMin: ["Pzr", "Pzt", "Sl", "Çrb", "Prş", "Cm", "Cmrt"],
+                minDate: 0,
+                
+            });
+        });
+        $(function () {
+            $.validator.methods.date = function (value, element) {
+                return this.optional(element) || moment(value, "dd.mm.yy", true).isValid();
+            }
+        });
+    </script>
+}*@
